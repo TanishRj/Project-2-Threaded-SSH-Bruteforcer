@@ -1,7 +1,9 @@
 # Importing Libraries 
 # 1. Paramiko - To automate the process of ssh connection
 # 2. Termcolor - For Terminal color
+# 3. Threading - For Faster Bruteforce
 import termcolor, sys, os, paramiko, socket
+import threading, time
 
 print("------------| PROJECT - 2 | THREADED SSH BRUTEFORCER | BY TANISH CHOUDHARY |------------")
 
