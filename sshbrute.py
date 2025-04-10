@@ -40,7 +40,7 @@ with open(input_file, 'r') as file:
         try:
             response = ssh_connect(password)
             if response == 0:
-                print(termcolor(("[-|-] PASSWORD FOUND : " + password + " FOR USERNAME" + username), 'green'))
+                print(termcolor.colored(("[+|+] PASSWORD FOUND : " + password + " FOR USERNAME : " + username), 'green'))
                 break
             elif response == 1:
                 print("[-|-] INCORRECT LOGIN WITH : " + password)
